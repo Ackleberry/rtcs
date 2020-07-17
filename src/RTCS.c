@@ -15,6 +15,7 @@ extern int NumLoops;
 #define FOREVER() (NumLoops--)
 #endif
 
+
 volatile STATIC RTCS_Task_t TaskTable[RTCS_NUM_TASKS];
 
 void RTCS_Init(void)
