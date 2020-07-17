@@ -1,5 +1,5 @@
-#ifndef RTCS_H
-#define RTCS_H
+#ifndef _RTCS_H
+#define _RTCS_H
 
 #include <stdint.h>
 
@@ -27,4 +27,4 @@ void RTCS_Run(void);
 
 void RTCS_Tick(void);
 
-#endif
+#endif /* _RTCS_H */
