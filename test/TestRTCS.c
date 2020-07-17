@@ -5,6 +5,7 @@
 #include "RTCS.h"
 
 extern RTCS_Task_t TaskTable[];
+
 int NumLoops;
 static int TaskACalls;
 static int TaskBCalls;
