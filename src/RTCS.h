@@ -17,6 +17,10 @@
  */
 #define RTCS_NUM_TASKS (10)
 
+/**
+ * Structure represents a task entry. None of the members of this structure
+ * are intended to be accessed outside of the RTCS functions.
+ */
 typedef struct _RTCS_Task_t
 {
    void (*Task)(void);
