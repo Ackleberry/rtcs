@@ -47,6 +47,12 @@ void IncrementTicksBy(int amount)
    }
 }
 
+/**
+ * Begin implementation specific tests.
+ *
+ * These tests were used to initially develop code. Delete any test if it
+ * begins to fail during a refactor.
+ */
 void test_RTCS_Init_should_SetAllTaskDataToZero(void)
 {
    RTCS_Task_t ExpectedTable[RTCS_NUM_TASKS] = {0};
@@ -250,3 +256,7 @@ void test_RTCS_Tick_should_ResetTicksRemaining_when_TaskBecomesPending(void)
    TEST_ASSERT_EQUAL(ticks, TaskTable[0].TicksRemaining);
    TEST_ASSERT_EQUAL(1, TaskTable[0].RunRequestsPending);
 }
+/**
+ * End implementation specific tests.
+ */
+
