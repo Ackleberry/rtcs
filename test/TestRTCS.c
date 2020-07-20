@@ -6,7 +6,7 @@
 
 extern RTCS_Task_t TaskTable[];
 
-int NumLoops;
+int NumLoops; // Number of loops RTCS_Run() takes before returning.
 static int TaskACalls;
 static int TaskBCalls;
 static int TaskCCalls;
