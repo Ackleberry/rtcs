@@ -260,3 +260,109 @@ void test_RTCS_Tick_should_ResetTicksRemaining_when_TaskBecomesPending(void)
  * End implementation specific tests.
  */
 
+void test_RTCS_Init_should_ClearAllExistingTasks(void)
+{
+   TEST_ASSERT_EQUAL(RTCS_Status_Success, RTCS_AddTask(TaskA, 0, 3));
+   TEST_ASSERT_EQUAL(RTCS_Status_Success, RTCS_AddTask(TaskB, 1, 4));
+   TEST_ASSERT_EQUAL(RTCS_Status_Success, RTCS_AddTask(TaskC, 2, 5));
+
+   IncrementTicksBy(5); // Let all tasks become pending
+   RTCS_Init();
+
+   NumLoops = 3; // Give all tasks a chance to execute
+   RTCS_Run();
+
+   TEST_ASSERT_EQUAL(0, TaskACalls);
+   TEST_ASSERT_EQUAL(0, TaskBCalls);
+   TEST_ASSERT_EQUAL(0, TaskCCalls);
+}
+
+void test_RTCS_AddTask_should_AddValidTask(void)
+{
+   TEST_ASSERT_EQUAL(RTCS_Status_Success, RTCS_AddTask(TaskA, RTCS_NUM_TASKS-1, UINT32_MAX));
+}
+
+void test_RTCS_AddTask_should_RejectANullTask(void)
+{
+   TEST_ASSERT_NOT_EQUAL(RTCS_Status_Success, RTCS_AddTask(NULL, RTCS_NUM_TASKS-1, 1));
+}
+
+void test_RTCS_AddTask_should_RejectTaskPriorityEqualOrHigherThanNumberOfAllowedTasks(void)
+{
+   TEST_ASSERT_NOT_EQUAL(RTCS_Status_Success, RTCS_AddTask(TaskA, RTCS_NUM_TASKS, 1));
+   TEST_ASSERT_NOT_EQUAL(RTCS_Status_Success, RTCS_AddTask(TaskB, RTCS_NUM_TASKS+1, 1));
+}
+
+void test_RTCS_Run_should_NotExecuteATaskWithNoPeriod(void)
+{
+   int period = 0;
+   TEST_ASSERT_EQUAL(RTCS_Status_Success, RTCS_AddTask(TaskA, 0, period));
+   IncrementTicksBy(10000); // Increment a bunch to try to trigger task call
+   NumLoops = 1;
+   RTCS_Run();
+   TEST_ASSERT_EQUAL(0, TaskACalls);
+}
+
+void test_RTCS_Run_should_ExecuteAShortPeriodicTask(void)
+{
+   int period = 1;
+   TEST_ASSERT_EQUAL(RTCS_Status_Success, RTCS_AddTask(TaskA, 0, period));
+   IncrementTicksBy(period);
+   NumLoops = 1;
+   RTCS_Run();
+   TEST_ASSERT_EQUAL(1, TaskACalls);
+}
+
+void test_RTCS_Run_should_ExecuteALongPeriodicTask(void)
+{
+   int period = 1000000;
+   TEST_ASSERT_EQUAL(RTCS_Status_Success, RTCS_AddTask(TaskA, 0, period));
+   IncrementTicksBy(period);
+   NumLoops = 1;
+   RTCS_Run();
+   TEST_ASSERT_EQUAL(1, TaskACalls);
+}
+
+void test_RTCS_Run_should_ExecuteHighestPriorityTasksFirst(void)
+{
+   // All 3 tasks will be scheduled to run after x tick
+   TEST_ASSERT_EQUAL(RTCS_Status_Success, RTCS_AddTask(TaskA, 2, 1));
+   TEST_ASSERT_EQUAL(RTCS_Status_Success, RTCS_AddTask(TaskB, 1, 1));
+   TEST_ASSERT_EQUAL(RTCS_Status_Success, RTCS_AddTask(TaskC, 0, 1));
+   IncrementTicksBy(1);
+
+   NumLoops = 1;
+   RTCS_Run();
+
+   TEST_ASSERT_EQUAL(0, TaskACalls);
+   TEST_ASSERT_EQUAL(0, TaskBCalls);
+   TEST_ASSERT_EQUAL(1, TaskCCalls);
+
+   NumLoops = 1;
+   RTCS_Run();
+
+   TEST_ASSERT_EQUAL(0, TaskACalls);
+   TEST_ASSERT_EQUAL(1, TaskBCalls);
+   TEST_ASSERT_EQUAL(1, TaskCCalls);
+
+   NumLoops = 1;
+   RTCS_Run();
+
+   TEST_ASSERT_EQUAL(1, TaskACalls);
+   TEST_ASSERT_EQUAL(1, TaskBCalls);
+   TEST_ASSERT_EQUAL(1, TaskCCalls);
+}
+
+void test_RTCS_Run_should_NotStarveHighestPriorityTask(void)
+{
+   TEST_ASSERT_EQUAL(RTCS_Status_Success, RTCS_AddTask(TaskA, 0, 1));
+   TEST_ASSERT_EQUAL(RTCS_Status_Success, RTCS_AddTask(TaskB, 1, 1));
+   TEST_ASSERT_EQUAL(RTCS_Status_Success, RTCS_AddTask(TaskC, 2, 1));
+   IncrementTicksBy(100);
+
+   NumLoops = 100;
+   RTCS_Run();
+
+   TEST_ASSERT_EQUAL(100, TaskACalls);
+   TEST_ASSERT_EQUAL(0, TaskBCalls);
+}
