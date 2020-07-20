@@ -20,7 +20,7 @@ Option 2) Manually copy and the `src` files to your project. This option doesn't
 
 3. Install GCC
 
-4. Clone the [Unity](https://github.com/ThrowTheSwitch/Unity) repository in the same directory as your project folder.
+4. Clone the [Unity](https://github.com/ThrowTheSwitch/Unity) repository in the same directory level as your project folder.
 
 # Running the UNIT Tests:
 
