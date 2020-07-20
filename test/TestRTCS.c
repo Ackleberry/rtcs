@@ -39,9 +39,9 @@ void TaskC(void)
    TaskCCalls++;
 }
 
-void IncrementTicksBy(int amount)
+void IncrementTicksBy(uint32_t amount)
 {
-   for(int i = 0; i < amount; i++)
+   for(uint32_t i = 0; i < amount; i++)
    {
       RTCS_Tick();
    }
