@@ -21,7 +21,7 @@ volatile STATIC RTCS_Task_t TaskTable[RTCS_NUM_TASKS];
 
 void RTCS_Init(void)
 {
-   for (uint8_t i = 0; i < RTCS_NUM_TASKS; i++)
+   for (uint8_t i = 0; i < ARRAY_LEN(TaskTable); i++)
    {
       TaskTable[i].Task = (void *)0;
       TaskTable[i].Period = 0;
@@ -50,7 +50,7 @@ void RTCS_Run(void)
    while (FOREVER())
    {
       // start at top of table to find highest priority ready task
-      for (uint8_t i = 0; i < RTCS_NUM_TASKS; i++)
+      for (uint8_t i = 0; i < ARRAY_LEN(TaskTable); i++)
       {
          if ((TaskTable[i].Task != 0) && (TaskTable[i].RunRequestsPending > 0))
          {
@@ -64,7 +64,7 @@ void RTCS_Run(void)
 
 void RTCS_Tick(void)
 {
-   for (uint8_t i = 0; i < RTCS_NUM_TASKS; i++)
+   for (uint8_t i = 0; i < ARRAY_LEN(TaskTable); i++)
    {
       if ((TaskTable[i].Task != 0) && (TaskTable[i].TicksRemaining > 0))
       {
