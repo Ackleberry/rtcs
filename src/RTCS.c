@@ -9,7 +9,7 @@
 #endif
 
 #ifndef TEST
-#define FOREVER() 1
+#define FOREVER() (1)
 #else
 extern int NumLoops;
 #define FOREVER() (NumLoops--)
