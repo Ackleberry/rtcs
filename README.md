@@ -8,7 +8,7 @@ This module is comes packaged with UNIT tests. The [Unity Test Framework](https:
 
 Option 1) Clone this repository into your project directory and add only the `src` files to your project.
 
-Option 2) Manually copy and the `src` files to your project. This option doesn't allow you to run UNIT test on the RTCS files.
+Option 2) Manually copy and add the `src` files to your project. This option doesn't allow you to run UNIT test on the RTCS files.
 
 # UNIT Test Setup:
 
