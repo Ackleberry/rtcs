@@ -36,11 +36,7 @@ typedef enum
 } RTCS_Status_t;
 
 /**
- * Initialize scheduler
- *
- * @param f fifo to initialize
- * @param buf buffer to be used for storing fifo items tracked by f
- * @param size number of bytes allocated to buf
+ * Initializes the scheduler and removes all existing tasks.
  */
 void RTCS_Init(void);
 
@@ -59,7 +55,7 @@ void RTCS_Tick(void);
  * Adds a new task entry to the scheduler.
  *
  * @param task The function to be executed
- * @param priority task importance relative to all other tasks. 0 = highest
+ * @param priority Task importance relative to all other tasks. 0 = highest
  * @param period How often the task should run. unit: ticks, defined by RTCS_Tick()
  *
  * @note Two or more tasks cannot have the same priorty value.
