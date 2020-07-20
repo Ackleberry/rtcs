@@ -15,6 +15,7 @@ extern int NumLoops;
 #define FOREVER() (NumLoops--)
 #endif
 
+#define ARRAY_LEN(a) ( sizeof(a) / sizeof(a[0]) )
 
 volatile STATIC RTCS_Task_t TaskTable[RTCS_NUM_TASKS];
 
@@ -31,7 +32,7 @@ void RTCS_Init(void)
 
 RTCS_Status_t RTCS_AddTask(void task(void), uint8_t priority, uint32_t period)
 {
-   if (task == NULL || priority >= RTCS_NUM_TASKS)
+   if (task == NULL || priority >= ARRAY_LEN(TaskTable))
    {
       return RTCS_Status_Failure;
    }
