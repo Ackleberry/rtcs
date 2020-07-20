@@ -3,16 +3,12 @@
 #include "RTCS.h"
 
 #ifndef TEST
-#define STATIC static
+#  define STATIC static
+#  define FOREVER() (1)
 #else
-#define STATIC
-#endif
-
-#ifndef TEST
-#define FOREVER() (1)
-#else
-extern int NumLoops;
-#define FOREVER() (NumLoops--)
+#  define STATIC
+   extern int NumLoops;
+#  define FOREVER() (NumLoops--)
 #endif
 
 #define ARRAY_LEN(a) ( sizeof(a) / sizeof(a[0]) )
