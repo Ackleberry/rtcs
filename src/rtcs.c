@@ -1,5 +1,5 @@
 /**
- * @file RTCS.c
+ * @file rtcs.c
  */
 
 #include <stddef.h>

@@ -1,5 +1,5 @@
 /**
- * @file RTCS.h
+ * @file rtcs.h
  * @author Brooks Anderson
  * @date 16 July 2020
  * @brief A run-to-completion-scheduler.
