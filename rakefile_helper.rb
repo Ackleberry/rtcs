@@ -22,7 +22,7 @@ def configure_toolchain(config_file = DEFAULT_CONFIG_FILE)
 end
 
 def unit_test_files
-  path = $cfg['compiler']['unit_tests_path'] + 'Test*' + C_EXTENSION
+  path = $cfg['compiler']['unit_tests_path'] + 'test_*' + C_EXTENSION
   path.tr!('\\', '/')
   FileList.new(path)
 end

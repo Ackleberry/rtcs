@@ -4,7 +4,7 @@
 
 #include <stddef.h>
 
-#include "RTCS.h"
+#include "rtcs.h"
 
 #ifndef TEST
 #  define STATIC static

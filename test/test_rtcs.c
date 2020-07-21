@@ -2,7 +2,7 @@
 #include <stddef.h>
 
 #include "unity.h"
-#include "RTCS.h"
+#include "rtcs.h"
 
 extern RTCS_Task_t TaskTable[];
 
