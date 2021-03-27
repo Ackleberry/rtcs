@@ -1,6 +1,6 @@
 # About:
 
-A run-to-completion-scheduler (RTCS) module. This scheduler is nonpreemptive with low overhead. All tasks are given some priority value. A RTCS scheduler has the characteristic of always running high priority tasks even at the expense of completely starving lower priority tasks.
+A run-to-completion-scheduler (RTCS) module. This scheduler is nonpreemptive with low overhead. All tasks are given a unique priority value. A RTCS scheduler has the characteristic of always running high priority tasks even at the expense of completely starving lower priority tasks.
 
 This module is comes packaged with UNIT tests. The [Unity Test Framework](https://github.com/ThrowTheSwitch/Unity) is used.
 
