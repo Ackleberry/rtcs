@@ -14,13 +14,9 @@ Option 2) Manually copy and add the `src` files to your project. This option doe
 
 1. Install [Ruby](https://rubyinstaller.org/)
 
-2. Install latest Ruby Rake gem:
+2. Install GCC
 
-    `gem install rake`
-
-3. Install GCC
-
-4. Clone the [Unity](https://github.com/ThrowTheSwitch/Unity) repository in the same directory level as your project folder.
+3. Clone the [Unity](https://github.com/ThrowTheSwitch/Unity) repository in the same directory level as your project folder.
 
 # Running the UNIT Tests:
 
