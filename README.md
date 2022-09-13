@@ -25,4 +25,9 @@ Option 2) Manually copy and add the `src` files to your project. This option doe
 
 Open terminal in the RTCS directory, run `rake` or `rake all` to build and run the UNIT tests.
 
+# Limitations
+
+Your system must be capable of running 32-bit applications. This was done so the unit tests better emulate 32-bit ARM CPUs.
+To work around this, comment out all `-m32` occurances in `target_gcc_32.yml`.
+
 
