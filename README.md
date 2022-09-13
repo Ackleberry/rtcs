@@ -14,9 +14,12 @@ Option 2) Manually copy and add the `src` files to your project. This option doe
 
 1. Install [Ruby](https://rubyinstaller.org/)
 
-2. Install GCC
+2. Ensure you have GCC installed
 
-3. Clone the [Unity](https://github.com/ThrowTheSwitch/Unity) repository in the same directory level as your project folder.
+3. Ensure you have gcc-multilib installed: `sudo apt install gcc-multilib`
+    * Otherwise you may see this error: `fatal error: sys/cdefs.h: No such file or directory`
+
+4. Clone the [Unity](https://github.com/ThrowTheSwitch/Unity) repository in the same directory level as your project folder.
 
 # Running the UNIT Tests:
 
