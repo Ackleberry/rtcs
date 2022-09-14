@@ -12,7 +12,7 @@ Option 2) Manually copy and add the `src` files to your project. This option doe
 
 # UNIT Test Setup:
 
-1. Install [Ruby](https://rubyinstaller.org/)
+1. Install [Ruby 2.7](https://rubyinstaller.org/)
 
 2. Ensure you have GCC installed
 
